@@ -1,16 +1,28 @@
 var startQuizContainer = document.querySelector(".start-quiz");
 var quizContainer = document.querySelector(".quiz");
+var finishEl = document.querySelector(".finish");
 var timerElement = document.querySelector("#timer");
-var timerCount=100;
 var startQuizButton = document.querySelector(".start-quiz-button");
+var sumitbtn = document.querySelector(".submit");
+var choices = document.querySelectorAll(".choice");
 
+var Student = document.querySelector("#student");
+var yourScores = document.querySelector(".yourScores")
 var question = document.querySelector(".question");
 var choiceBox = document.querySelector(".choice-box");
+var previousKey= document.querySelector(".previous-question-key");
+
+
+var timerCount=40;
+var timereduce=10;
+var Scores=100;
+var reducescores=25;
+
 var currentQuestion=0;
-var choices = document.querySelectorAll(".choice");
+
 var noOfCorrect=0;
 var noOfIncorrect=0;
-var previousKey= document.querySelector(".previous-question-key");
+
 
 /*var selectchoices = document.querySelector (".choice")*/
 
@@ -45,19 +57,14 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = "Timer: " + timerCount;
-      if (timerCount >= 0) {
-        // Tests if win condition is met
-        /*if (isWin && timerCount > 0) {
-          // Clears interval and stops timer
-          clearInterval(timer);
-          winGame();
-        }*/
-      }
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
+
+      if (timerCount <= 0) {
+        timerElement.textContent = "Timer: " + 0;
+        finishEl.setAttribute("style","display:block");
+        quizContainer.setAttribute("style","display:none")
+        yourScores.textContent = "Your score is: " + Scores;
         clearInterval(timer);
-        /*loseGame();*/
+        
       }
     }, 1000);
   }
@@ -69,7 +76,8 @@ function renderQuestion(x,y){
 
     if(y===0){
         previousKey.textContent = "answer was wrong";
-        timerCount=timerCount-10;
+        Scores=Scores-reducescores;
+        timerCount=timerCount-timereduce;
         
     }else if (y===1){
         previousKey.textContent = "answer was correct";
@@ -78,7 +86,10 @@ function renderQuestion(x,y){
 
 
     if (x>=questionsArray.length){
-        quizContainer.setAttribute("style","display:none")
+        quizContainer.setAttribute("style","display:none");
+        finishEl.setAttribute("style","display:block");
+        yourScores.textContent = "Your score is: " + Scores;
+
         return;
     }
     for (var i = 0; i<4; i++){
@@ -117,11 +128,26 @@ choiceBox.addEventListener("click",function(event){
 
    currentQuestion++;
    renderQuestion(currentQuestion,correctOrNot);
-
 });
 
 
 
+sumitbtn.addEventListener("click", function(event){
+    event.preventDefault();
+    saveLastScores();
+    
+})
+    
+
+function saveLastScores() {
+    
+    var studentScores = {
+      student: Student.value.trim(),
+      scores: Scores, 
+    };
+    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+    localStorage.setItem("studentsScores", JSON.stringify(studentScores));
+  }
 
 
 
