@@ -18,6 +18,15 @@
     justify-content: space-between;
   }
 
+  .view-high-scores{
+    color:#8a2be2
+  }
+
+  .view-high-scores:hover{
+    cursor:pointer;
+  }
+
+
   #timer {
     display: flex;
     justify-content: space-between;
@@ -48,7 +57,7 @@
 
   .quiz{
     display: none;
-    width: 80%;  
+    width: 50%;  
   }
   
   
@@ -57,8 +66,6 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
     font-weight: bold;
-    
-
   }
 
   .choice-box{
@@ -78,14 +85,19 @@
   }
 
   .choice:hover{
-    background-color: rgb(222, 107, 222);
+    background: rgb(222, 107, 222);
+    cursor:pointer;
   }
 
   .previous-question-key{
+    display: none;
+    margin-left: 100px;
+    margin-right: 100px;
     font-size: 30px;
     margin-top: 30px;
     padding-top: 5px;
     border-top: 2px solid;
+    color: gray;
   }
 
   .finish{
@@ -107,4 +119,8 @@
 
   .button{
     font-size: 1.5em;
+  }
+
+  .high-scores-name{
+    display: none;
   }

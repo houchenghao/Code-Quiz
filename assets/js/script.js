@@ -5,12 +5,14 @@ var timerElement = document.querySelector("#timer");
 var startQuizButton = document.querySelector(".start-quiz-button");
 var sumitbtn = document.querySelector(".submit");
 var choices = document.querySelectorAll(".choice");
-
+var viewHighScores = document.querySelector("view-high-scores");
 var Student = document.querySelector("#student");
 var yourScores = document.querySelector(".yourScores")
 var question = document.querySelector(".question");
 var choiceBox = document.querySelector(".choice-box");
-var previousKey= document.querySelector(".previous-question-key");
+var previousKey = document.querySelector(".previous-question-key");
+var highScorename = document.querySelector(".high-scores-name");
+var highScoreList = document.querySelector(".list");
 
 
 var timerCount=40;
@@ -49,8 +51,6 @@ var questionsArray = [
     }
 ]
 
-
-
 function startTimer() {
     // Sets timer
     renderQuestion(currentQuestion);
@@ -64,25 +64,25 @@ function startTimer() {
         quizContainer.setAttribute("style","display:none")
         yourScores.textContent = "Your score is: " + Scores;
         clearInterval(timer);
-        
       }
     }, 1000);
   }
 
 function renderQuestion(x,y){
-    /*console.log(x);
-    console.log(questionsArray.length);*/
-    console.log("previous answer is: " + y);
 
     if(y===0){
-        previousKey.textContent = "answer was wrong";
+        previousKey.textContent = "Wrong";
         Scores=Scores-reducescores;
         timerCount=timerCount-timereduce;
         
     }else if (y===1){
-        previousKey.textContent = "answer was correct";
+        previousKey.textContent = "Correct";
     }
     
+    if (previousKey.textContent==="Correct" || previousKey.textContent==="Wrong")
+    {
+        previousKey.setAttribute("style","display:block");
+    }
 
 
     if (x>=questionsArray.length){
@@ -92,6 +92,7 @@ function renderQuestion(x,y){
 
         return;
     }
+
     for (var i = 0; i<4; i++){
         question.textContent=questionsArray[x].question;
         choices[i].textContent=questionsArray[x].choice[i];
@@ -101,15 +102,23 @@ function renderQuestion(x,y){
     }
 }
 
-function starQuiz(){
+
+function saveLastScores() {
+    var studentScores = {
+      student: Student.value.trim(),
+      scores: Scores, 
+    };
+    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+    localStorage.setItem("studentScores", JSON.stringify(studentScores));
+  }
+
+
+
+startQuizButton.addEventListener("click", function(event){
     startQuizContainer.setAttribute("style", "display:none");
     quizContainer.setAttribute("style","display:block")
     startTimer();
-}
-
-
-
-startQuizButton.addEventListener("click",starQuiz);
+});
 
 
 choiceBox.addEventListener("click",function(event){
@@ -135,7 +144,15 @@ choiceBox.addEventListener("click",function(event){
 sumitbtn.addEventListener("click", function(event){
     event.preventDefault();
     saveLastScores();
+
+    finishEl.setAttribute("style","display:none");
+    previousKey.setAttribute("style","display:none");
+
+    highScorename.setAttribute("style","display:block");
+    var lasterStudentScores = JSON.parse(localStorage.getItem("studentScores"));
     
+    highScoreList.textContent=lasterStudentScores.student + "-" + lasterStudentScores.scores;
+
 })
     
 
@@ -146,11 +163,13 @@ function saveLastScores() {
       scores: Scores, 
     };
     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-    localStorage.setItem("studentsScores", JSON.stringify(studentScores));
+    localStorage.setItem("studentScores", JSON.stringify(studentScores));
   }
 
 
-
+  viewHighScores.addEventListener("click",function(){
+    highScorename.setAttribute("style","display:bolck")
+  })
 
 
 
