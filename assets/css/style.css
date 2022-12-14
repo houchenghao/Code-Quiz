@@ -5,17 +5,15 @@
   body {
     font-family: Arial;
     margin: 20px;
-    
   }
-  
-  p {
-    padding: 2px;
-  }
-  
 
   header{
     display: flex;
     justify-content: space-between;
+  }
+
+  p {
+    padding: 2px;
   }
 
   .view-high-scores{
@@ -26,11 +24,9 @@
     cursor:pointer;
   }
 
-
   #timer {
     display: flex;
     justify-content: space-between;
-    
   }
 
   .quiz-container{
@@ -40,12 +36,11 @@
     align-items: center;
   }
 
-  .start-quiz{
+  .start-quiz-foreword{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
 
   .start-quiz-button{
     margin-top: 20px;
@@ -60,7 +55,6 @@
     width: 50%;  
   }
   
-  
   .question{
     /*display: flex;*/
     font-family: Arial, Helvetica, sans-serif;
@@ -71,7 +65,6 @@
   .choice-box{
     display: table;
   }
-
 
   .choice{   
     background: darkmagenta;
@@ -89,17 +82,6 @@
     cursor:pointer;
   }
 
-  .previous-question-key{
-    display: none;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 30px;
-    margin-top: 30px;
-    padding-top: 5px;
-    border-top: 2px solid;
-    color: gray;
-  }
-
   .finish{
     display: none;
   }
@@ -115,12 +97,40 @@
   
   .submit{
     padding-left: 20px;
+    color: white;
   }
 
   .button{
     font-size: 1.5em;
+    background-color: darkmagenta;
+    color: white;
   }
 
   .high-scores-name{
     display: none;
+    padding-top: 80px;
+  }
+
+  .list{
+    font-size: 1.5em;
+    background-color: rgb(70, 159, 236);
+  }
+
+  .high-scores-name-buttons{
+    display: flex;
+  }
+
+  .go-back{
+    padding-right: 20px;
+  }
+
+  .previous-question-key{
+    display: none;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 30px;
+    margin-top: 30px;
+    padding-top: 5px;
+    border-top: 2px solid;
+    color: gray;
   }
