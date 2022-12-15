@@ -162,7 +162,10 @@ viewHighScores.addEventListener("click",function(event){
     event.preventDefault();
     
     var lasteStudentScores = JSON.parse(localStorage.getItem("studentScores"));
-    highScoreList.textContent=lasteStudentScores.student + "-" + lasteStudentScores.scores;
+    if (lasteStudentScores.student!==""){
+        highScoreList.textContent=lasteStudentScores.student + "-" + lasteStudentScores.scores;
+    }
+    
 
     if(page===0){
         startQuizForewordEl.setAttribute("style","display:none");
