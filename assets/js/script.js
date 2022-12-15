@@ -34,24 +34,24 @@ var increseScores=25;
 "startPage","inQuiz","Finishpage", --0 1 2*/
 var questionsArray = [
     {
-        question:"adfsfsafsdddd dddddddddddddddddddddddddddd afdsafasfdsaffsd",
-        choice:["aaaaaaaaaaaa","bbbbbbbbb","fffffffff","gggggggghh"],
-        answer:"bbbbbbbbb",
+        question:"Commonely used data types do not includes",
+        choice:["1. strings","2. numbers","3. strings","4. alters"],
+        answer:"4. alters",
     },
     {
-        question:"dddddddd",
-        choice:["eeeeeeee","ffffff","bbbbbbb","ggggggggg"],
-        answer:"ffffff",
+        question:"Arrays in JavaScript can be used to stroe",
+        choice:["1. numbers and string","2. other arrays","3. booleans","4. All of the above"],
+        answer:"4. All of the above",
     },
     {
-        question:"dddddddd",
-        choice:["fdgsdfg","fffdfsgdgfdfff","bbbsvsfvbbbb","gggggsdfvfdgggg"],
-        answer:"fffdfsgdgfdfff",
+        question:"A very usefull tool used during development and debugging for printing content to the debugger is:",
+        choice:["1. JavaScript","2. terminal/bash","3. for loop","4. console.log"],
+        answer:"4. console.log",
     },
     {
-        question:"dddddddddsssddd",
-        choice:["eeeedfeeee","fffdsffff","bbbaasbbbb","gggdfgggggg"],
-        answer:"fffdsffff",
+        question:"The condition in an if / else statement is enclosed with _____.",
+        choice:["1. quotes","2. curly brackets","3. parenthesis","4. square brackets"],
+        answer:"2. curly brackets",
     }
 ];
 
@@ -120,7 +120,6 @@ function saveLastScores() {
     };
     localStorage.setItem("studentScores", JSON.stringify(studentScores));
 }
-
 
 startQuizButtonEl.addEventListener("click", function(event){
     init();

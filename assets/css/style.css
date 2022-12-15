@@ -107,13 +107,14 @@
   }
 
   .high-scores-name{
+    width: 40%;
     display: none;
     padding-top: 80px;
   }
 
   .list{
     font-size: 1.5em;
-    background-color: rgb(70, 159, 236);
+    background-color: rgb(196, 217, 235);
   }
 
   .high-scores-name-buttons{
