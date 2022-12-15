@@ -6,6 +6,7 @@ This application create a quiz with a set of questions. Each question is with 4 
 
 ## Mock-UP
 
-![](images/screenshot.PNG)
+![](/assets/image/screenshot.PNG)
 
 ## Link
+ https://houchenghao.github.io/Code-Quiz/
